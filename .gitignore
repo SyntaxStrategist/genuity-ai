@@ -58,7 +58,7 @@ fastlane/test_output
 iOSInjectionProject/
 
 ## 🔐 SECURITY - API Keys and Secrets
-Config.swift
+# Config.swift is NOW SAFE (no API keys, just backend URL)
 Secrets.swift
 .env
 *.plist.secret

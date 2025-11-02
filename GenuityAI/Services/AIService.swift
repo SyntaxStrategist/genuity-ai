@@ -147,15 +147,15 @@ class AIService: ObservableObject {
             "content": userMessage
         ])
         
-        // Prepare the request
-        guard let url = URL(string: Config.openAIEndpoint) else {
+        // Prepare the request to YOUR backend
+        guard let url = URL(string: Config.apiEndpoint) else {
             throw AIError.invalidURL
         }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("Bearer \(Config.openAIAPIKey)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 30
         
         // Build the messages array with system prompt
         var messages: [[String: String]] = [
@@ -164,15 +164,12 @@ class AIService: ObservableObject {
         messages.append(contentsOf: conversationHistory)
         
         let requestBody: [String: Any] = [
-            "model": Config.openAIModel,
-            "messages": messages,
-            "temperature": 0.7,
-            "max_tokens": 150
+            "messages": messages
         ]
         
         request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
         
-        // Make the API call
+        // Make the API call to YOUR backend
         let (data, response) = try await URLSession.shared.data(for: request)
         
         // Check response status
@@ -182,16 +179,14 @@ class AIService: ObservableObject {
         
         guard (200...299).contains(httpResponse.statusCode) else {
             let errorBody = String(data: data, encoding: .utf8) ?? "Unknown error"
-            print("OpenAI API Error: \(errorBody)")
+            print("Backend API Error: \(errorBody)")
             throw AIError.apiError(statusCode: httpResponse.statusCode, message: errorBody)
         }
         
-        // Parse the response
-        let openAIResponse = try JSONDecoder().decode(OpenAIResponse.self, from: data)
+        // Parse the response from YOUR backend
+        let backendResponse = try JSONDecoder().decode(BackendResponse.self, from: data)
         
-        guard let aiMessage = openAIResponse.choices.first?.message.content else {
-            throw AIError.noResponse
-        }
+        let aiMessage = backendResponse.message
         
         // Add AI response to history
         conversationHistory.append([
@@ -504,15 +499,14 @@ class AIService: ObservableObject {
 
 // MARK: - Models
 
-struct OpenAIResponse: Codable {
-    let choices: [Choice]
+struct BackendResponse: Codable {
+    let message: String
+    let usage: Usage?
     
-    struct Choice: Codable {
-        let message: Message
-    }
-    
-    struct Message: Codable {
-        let content: String
+    struct Usage: Codable {
+        let prompt_tokens: Int?
+        let completion_tokens: Int?
+        let total_tokens: Int?
     }
 }
 
