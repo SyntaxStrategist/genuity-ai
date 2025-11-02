@@ -137,7 +137,7 @@ struct SettingsView: View {
                 } footer: {
                     Text(aiService.aiMode == .local 
                         ? "All AI processing happens on your device. Your data never leaves your phone." 
-                        : "AI responses are processed by OpenAI. Your messages are sent securely but leave your device.")
+                        : "ACTIVE: Cloud AI sends your chat messages to OpenAI for better responses. Your mood data, patterns, and HealthKit info stay 100% local and encrypted.")
                 }
                 
                 // HealthKit Section
@@ -292,7 +292,7 @@ struct SettingsView: View {
             .sheet(isPresented: $showingPrivacyPolicy) {
                 PrivacyPolicyView()
             }
-            .alert("Enable Cloud AI?", isPresented: $showingCloudAIConsent) {
+            .alert("Enable Smarter AI?", isPresented: $showingCloudAIConsent) {
                 Button("Cancel", role: .cancel) {
                     aiService.aiMode = .local
                 }
@@ -300,7 +300,7 @@ struct SettingsView: View {
                     // User confirmed
                 }
             } message: {
-                Text("Cloud AI provides better conversational responses but sends your messages to OpenAI.\n\nYour mood data always stays on your device.\n\nYou can switch back to Local-Only anytime.")
+                Text("WHAT GETS SENT:\n• Your chat messages (\"feeling stressed today\")\n\nWHAT STAYS PRIVATE:\n• Your mood scores (never sent)\n• All your data & patterns (100% local)\n• HealthKit data (never sent)\n\nPowered by OpenAI GPT-4. You control this anytime.")
             }
             .alert("Delete All Data?", isPresented: $showingDeleteConfirmation) {
                 Button("Cancel", role: .cancel) {}
@@ -358,8 +358,8 @@ struct PrivacyInfoView: View {
                     
                     PrivacyPoint(
                         icon: "cloud.fill",
-                        title: "Optional Cloud AI",
-                        description: "If you enable Cloud AI mode, your chat messages (not mood data) are sent to OpenAI for better responses. You control this setting."
+                        title: "Smart Cloud AI (Optional)",
+                        description: "Enable smarter responses powered by GPT-4. Only your chat text is sent (\"feeling stressed\"). Your mood scores, patterns, HealthKit data - 100% local, never sent."
                     )
                     
                     PrivacyPoint(
