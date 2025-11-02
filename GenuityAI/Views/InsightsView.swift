@@ -36,6 +36,11 @@ struct InsightsView: View {
                         } else {
                             // Real insights (3+ days)
                             realInsightsView
+                            
+                            // Add predictions if 7+ days
+                            if dataManager.entries.count >= 7 {
+                                predictionsSection
+                            }
                         }
                     }
                 }
@@ -66,83 +71,145 @@ struct InsightsView: View {
         isLoadingInsights = false
     }
     
-    // DAY 1: First entry - show immediate value
-    private var day1InsightsView: some View {
-        VStack(spacing: 24) {
-            Image("BrandLogo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100, height: 100)
-                .padding()
+    // PREDICTIONS SECTION (merged from PredictionsView)
+    @StateObject private var patternEngine = PatternEngine()
+    
+    private var predictionsSection: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Divider()
+                .padding(.vertical)
             
-            Text("🎉 First Entry!")
+            Text("🔮 Predictions")
                 .font(.title2)
                 .fontWeight(.bold)
+                .padding(.horizontal)
             
-            Text("Great start! I'm learning about you.")
-                .font(.headline)
+            Text("Based on your patterns, here's what to expect:")
+                .font(.subheadline)
                 .foregroundColor(.secondary)
+                .padding(.horizontal)
             
-            // Show their first entry
+            if let prediction = patternEngine.currentPrediction {
+                PredictionCard(prediction: prediction)
+                    .padding(.horizontal)
+            } else {
+                Text("Analyzing your patterns...")
+                    .foregroundColor(.secondary)
+                    .padding()
+            }
+        }
+        .onAppear {
+            let patterns = patternEngine.detectPatterns(from: dataManager.entries)
+            if !patterns.isEmpty {
+                patternEngine.currentPrediction = patternEngine.generatePrediction(from: dataManager.entries)
+            }
+        }
+    }
+    
+    // DAY 1: First entry - show immediate value WITH CHART!
+    private var day1InsightsView: some View {
+        VStack(spacing: 24) {
+            // Show their mood right away!
             if let firstEntry = dataManager.entries.first {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("What I Learned Today:")
-                        .font(.headline)
-                        .foregroundColor(.purple)
+                    Text("Your First Entry")
+                        .font(.title2)
+                        .fontWeight(.bold)
                     
-                    HStack(spacing: 20) {
+                    // IMMEDIATE VISUAL FEEDBACK
+                    HStack(spacing: 40) {
                         VStack {
-                            Text("\(firstEntry.moodScore)")
-                                .font(.system(size: 48, weight: .bold))
+                            Text(firstEntry.moodEmoji)
+                                .font(.system(size: 64))
+                            Text("\(firstEntry.moodScore)/5")
+                                .font(.system(size: 32, weight: .bold))
                                 .foregroundColor(.purple)
-                            Text("Mood")
+                            Text("Your Mood")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
                         
-                        Divider()
-                            .frame(height: 60)
-                        
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Activities:")
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("What this means:")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
-                            ForEach(firstEntry.activities, id: \.self) { activity in
-                                Text("• \(activity)")
-                                    .font(.subheadline)
+                            
+                            if firstEntry.moodScore >= 4 {
+                                Text("✨ You're feeling good! Track daily to understand what keeps you here.")
+                            } else if firstEntry.moodScore >= 3 {
+                                Text("👍 Baseline captured. I'll help you identify what boosts this.")
+                            } else {
+                                Text("💜 Tough day noted. In 3 days, I'll find patterns to help prevent these.")
                             }
                         }
+                        .font(.subheadline)
                     }
                     .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.purple.opacity(0.1))
-                    .cornerRadius(12)
+                    .padding(24)
+                    .background(
+                        LinearGradient(colors: [Color.purple.opacity(0.1), Color.purple.opacity(0.05)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+                    .cornerRadius(16)
                     
-                    Text("💡 Keep tracking! After 3 check-ins, I'll discover patterns like:")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Label("Which activities boost your mood most", systemImage: "arrow.up.right")
-                        Label("Your best vs worst times of day", systemImage: "clock")
-                        Label("Specific habits that make you happier", systemImage: "star.fill")
+                    // What's coming
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text("📈 What You'll Unlock:")
+                            .font(.headline)
+                            .foregroundColor(.purple)
+                        
+                        HStack {
+                            Image(systemName: "chart.line.uptrend.xyaxis")
+                                .font(.title2)
+                                .foregroundColor(.green)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("3 Days")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Text("Pattern Detection")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                            }
+                            Spacer()
+                        }
+                        .padding()
+                        .background(Color(.systemBackground))
+                        .cornerRadius(12)
+                        
+                        HStack {
+                            Image(systemName: "sparkles")
+                                .font(.title2)
+                                .foregroundColor(.purple)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("7 Days")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Text("Mood Predictions")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                            }
+                            Spacer()
+                        }
+                        .padding()
+                        .background(Color(.systemBackground))
+                        .cornerRadius(12)
                     }
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(16)
                 }
                 .padding()
                 .background(Color(.systemBackground))
-                .cornerRadius(16)
+                .cornerRadius(20)
                 .shadow(color: .black.opacity(0.05), radius: 10)
                 .padding(.horizontal)
             }
             
-            Text("Check back tomorrow after your next entry!")
-                .font(.subheadline)
+            Text("Come back tomorrow! 💜")
+                .font(.headline)
                 .foregroundColor(.purple)
                 .padding()
         }
-        .padding(.vertical, 40)
+        .padding(.vertical, 20)
     }
     
     // DAY 2: Early patterns emerging
@@ -517,6 +584,78 @@ struct ProgressCircle: View {
                     }
                 }
             )
+    }
+}
+
+// MARK: - Prediction Card (simplified from PredictionsView)
+struct PredictionCard: View {
+    let prediction: MoodPrediction
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(prediction.date, style: .date)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    Text("Predicted Mood: \(String(format: "%.1f", prediction.predictedMood))/5")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                }
+                Spacer()
+                Text(moodEmoji(for: prediction.predictedMood))
+                    .font(.system(size: 50))
+            }
+            
+            if !prediction.riskFactors.isEmpty {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("⚠️ Watch Out For:")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                    ForEach(prediction.riskFactors, id: \.self) { factor in
+                        Text("• \(factor)")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+            
+            if !prediction.interventionPlan.steps.isEmpty {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("💪 Prevention Plan:")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.purple)
+                    ForEach(prediction.interventionPlan.steps.prefix(3), id: \.id) { step in
+                        HStack(alignment: .top, spacing: 8) {
+                            Image(systemName: "checkmark.circle")
+                                .foregroundColor(.purple)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(step.action)
+                                    .font(.subheadline)
+                                Text(step.timing)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(16)
+        .shadow(color: .black.opacity(0.05), radius: 10)
+    }
+    
+    private func moodEmoji(for score: Double) -> String {
+        switch score {
+        case 4.5...: return "😄"
+        case 3.5..<4.5: return "🙂"
+        case 2.5..<3.5: return "😐"
+        case 1.5..<2.5: return "😕"
+        default: return "😢"
+        }
     }
 }
 

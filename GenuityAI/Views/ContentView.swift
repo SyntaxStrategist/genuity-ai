@@ -27,35 +27,19 @@ struct ContentView: View {
                 .tabItem {
                     Label("Insights", systemImage: "chart.line.uptrend.xyaxis")
                 }
-                .badge(dataManager.entries.count < 3 ? "🔒" : "")
                 .tag(1)
-            
-            PredictionsView()
-                .tabItem {
-                    Label("Predict", systemImage: "sparkles")
-                }
-                .badge(dataManager.entries.count < 7 ? "🔒" : "")
-                .tag(2)
-            
-            EffectivenessView(dataManager: dataManager)
-                .tabItem {
-                    Label("Results", systemImage: "chart.bar.doc.horizontal")
-                }
-                .badge(dataManager.effectivenessReports.isEmpty ? "🔒" : "")
-                .tag(3)
             
             HistoryView()
                 .tabItem {
                     Label("History", systemImage: "calendar")
                 }
-                .badge(dataManager.entries.count)
-                .tag(4)
+                .tag(2)
             
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
-                .tag(5)
+                .tag(3)
         }
         .accentColor(.purple)
         .fullScreenCover(isPresented: $showLegalConsent) {
@@ -66,17 +50,16 @@ struct ContentView: View {
             OnboardingView(isPresented: $showOnboarding)
         }
         .onAppear {
-            // Show legal consent FIRST, then onboarding
-            if !hasAgreedToTerms {
-                showLegalConsent = true
-            } else if !hasCompletedOnboarding {
+            // Show onboarding first (no legal wall!)
+            if !hasCompletedOnboarding {
                 showOnboarding = true
                 hasCompletedOnboarding = true
             }
         }
-        .onChange(of: hasAgreedToTerms) { agreed in
-            if agreed && !hasCompletedOnboarding {
-                showOnboarding = true
+        .onChange(of: dataManager.entries.count) { count in
+            // Show legal consent AFTER first entry (better UX!)
+            if count == 1 && !hasAgreedToTerms {
+                showLegalConsent = true
             }
         }
     }

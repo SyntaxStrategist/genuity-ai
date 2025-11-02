@@ -45,12 +45,11 @@ struct ChatView: View {
                 
                 // Input area
                 VStack(spacing: 8) {
-                    // Hint text
+                    // Simpler hint (less is more)
                     if messages.count <= 1 {
-                        Text("💡 Quick tips: \"Feeling stressed\", \"Had a great day\", \"Pretty tired\"")
+                        Text("Just type how you're feeling →")
                             .font(.caption)
                             .foregroundColor(.secondary)
-                            .padding(.horizontal)
                     }
                     
                     HStack(spacing: 12) {
@@ -81,6 +80,8 @@ struct ChatView: View {
                 if messages.isEmpty {
                     addWelcomeMessage()
                 }
+                // Give AI context from past entries
+                aiService.setContext(from: dataManager.entries)
             }
         }
     }
@@ -104,9 +105,9 @@ struct ChatView: View {
                 .padding(.horizontal)
             
             VStack(alignment: .leading, spacing: 12) {
-                HintRow(icon: "1.circle.fill", text: "Be honest about your emotions")
-                HintRow(icon: "2.circle.fill", text: "One message is enough")
-                HintRow(icon: "3.circle.fill", text: "Check Insights after 7 days")
+                HintRow(icon: "1.circle.fill", text: "One quick message is enough")
+                HintRow(icon: "2.circle.fill", text: "I'll remember context over time")
+                HintRow(icon: "3.circle.fill", text: "Patterns unlock after 3 days")
             }
             .padding()
             .background(Color.purple.opacity(0.1))

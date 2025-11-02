@@ -14,6 +14,7 @@ class AIService: ObservableObject {
     @Published var aiMode: SecurityManager.AIMode = .local
     
     private var conversationHistory: [[String: String]] = []
+    private var recentMoodEntries: [MoodEntry] = []  // Context memory!
     
     // MARK: - Main AI Response Generation (LOCAL-FIRST)
     
@@ -44,23 +45,96 @@ class AIService: ObservableObject {
     }
     
     // MARK: - Local AI (100% Private - No Internet Required)
+    // NOW WITH CONTEXT AWARENESS!
+    
+    func setContext(from entries: [MoodEntry]) {
+        self.recentMoodEntries = Array(entries.prefix(7))  // Remember last 7 days
+    }
     
     private func generateLocalResponse(to userMessage: String) -> String {
         let lowercased = userMessage.lowercased()
         
-        // Local keyword-based responses (empathetic but simple)
+        // FIRST: Check if first message (special welcome)
+        if conversationHistory.isEmpty {
+            conversationHistory.append(["role": "user", "content": userMessage])
+            return generateFirstMessageResponse(to: userMessage, lowercased: lowercased)
+        }
+        
+        conversationHistory.append(["role": "user", "content": userMessage])
+        
+        // CONTEXT-AWARE RESPONSES (references past entries)
+        if let lastEntry = recentMoodEntries.first, recentMoodEntries.count > 1 {
+            // Compare to yesterday
+            if recentMoodEntries.count >= 2 {
+                let previousEntry = recentMoodEntries[1]
+                
+                // Detect improvement
+                if lowercased.contains("better") || lowercased.contains("good") || lowercased.contains("great") {
+                    if previousEntry.moodScore <= 2 {
+                        return "I'm so glad you're feeling better! Yesterday seemed tough. What changed? 💜"
+                    }
+                }
+                
+                // Detect decline
+                if lowercased.contains("worse") || lowercased.contains("bad") || lowercased.contains("stressed") {
+                    if previousEntry.moodScore >= 4 {
+                        return "I noticed a shift from yesterday. What happened? Want to talk about it?"
+                    }
+                }
+            }
+            
+            // Activity-based context
+            if lastEntry.activities.contains("Exercise") && (lowercased.contains("tired") || lowercased.contains("exhausted")) {
+                return "You mentioned exercise recently. Maybe your body needs recovery time?"
+            }
+        }
+        
+        // PATTERN-BASED RESPONSES (if we have enough data)
+        if recentMoodEntries.count >= 5 {
+            let avgMood = Double(recentMoodEntries.reduce(0) { $0 + $1.moodScore }) / Double(recentMoodEntries.count)
+            
+            if lowercased.contains("sad") || lowercased.contains("down") {
+                if avgMood >= 3.5 {
+                    return "This seems unusual for you - you've been doing well lately. Anything specific today?"
+                } else {
+                    return "I've noticed this pattern this week. Let's figure out what's causing it together 💜"
+                }
+            }
+        }
+        
+        // STANDARD EMPATHETIC RESPONSES (improved)
         if lowercased.contains("great") || lowercased.contains("amazing") || lowercased.contains("happy") || lowercased.contains("excited") {
-            return "That's wonderful to hear! 😊 What's making today great?"
+            let responses = [
+                "That's wonderful! 😊 What's the highlight?",
+                "Love to hear it! What made today great?",
+                "Awesome! Tell me more!"
+            ]
+            return responses.randomElement() ?? responses[0]
         } else if lowercased.contains("sad") || lowercased.contains("down") || lowercased.contains("depressed") {
-            return "I'm sorry you're feeling this way. I'm here if you want to talk about it 💜"
+            return "I'm here with you 💜 No pressure to share, but I'm listening if you want to."
         } else if lowercased.contains("anxious") || lowercased.contains("worried") || lowercased.contains("stressed") {
-            return "I understand. Stress can be overwhelming. What's weighing on you most? (no pressure to share)"
+            return "Stress is hard. Take a breath. What's on your mind?"
         } else if lowercased.contains("tired") || lowercased.contains("exhausted") {
-            return "It sounds like you need rest. How's your sleep been?"
+            return "Sounds like you need rest. How's your sleep been?"
         } else if lowercased.contains("angry") || lowercased.contains("frustrated") {
-            return "I hear your frustration. It's okay to feel angry. Want to share what happened?"
+            return "I hear your frustration. It's valid. What happened?"
+        } else if lowercased.contains("okay") || lowercased.contains("fine") || lowercased.contains("alright") {
+            return "Just okay? That's honest. Anything you want to share?"
         } else {
-            return "Thank you for sharing. I'm here if you want to talk more 💜"
+            return "Got it. I'm tracking this. Come back tomorrow and I'll spot more patterns 💜"
+        }
+    }
+    
+    private func generateFirstMessageResponse(to userMessage: String, lowercased: String) -> String {
+        // More natural first responses
+        if lowercased.contains("great") || lowercased.contains("good") || lowercased.contains("happy") {
+            return "Great to meet you on a good day! 😊 I've saved this. Check back after a few days to see patterns."
+        } else if lowercased.contains("sad") || lowercased.contains("bad") || lowercased.contains("stressed") {
+            return "Thanks for trusting me with this 💜 I'll help you spot what leads to days like this. How are you taking care of yourself today?"
+        } else if lowercased.contains("tired") || lowercased.contains("exhausted") {
+            return "Noted. I'll watch for sleep patterns. Want to share more, or is that it for today?"
+        } else {
+            return "Got it, thanks for sharing. That's all I need for today! Come back tomorrow 💜"
         }
     }
     
