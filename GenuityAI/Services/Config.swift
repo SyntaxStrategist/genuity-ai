@@ -22,11 +22,11 @@ struct Config {
         return ""
     }()
     
-    // Model selection
-    static let openAIModel = "gpt-4o-mini" // Cheaper and faster, or use "gpt-4o" for better quality
+    // Model selection (kept for reference, but backend handles this now)
+    static let openAIModel = "gpt-4o-mini"
     
-    // API endpoint
-    static let openAIEndpoint = "https://api.openai.com/v1/chat/completions"
+    // Backend API endpoint (YOUR Vercel backend!)
+    static let apiEndpoint = "https://genuity-9uzwbiyui-avenir-ai-solutions-projects.vercel.app/api/chat"
     
     // MARK: - System Prompt
     static let systemPrompt = """
@@ -56,7 +56,7 @@ struct Config {
     
     // MARK: - Validation
     static var isConfigured: Bool {
-        return !openAIAPIKey.isEmpty && openAIAPIKey != "YOUR_API_KEY_HERE"
+        true  // Backend is live and configured!
     }
 }
 

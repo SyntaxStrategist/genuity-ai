@@ -214,7 +214,7 @@ class AIService: ObservableObject {
     }
     
     private func callOpenAIForExtraction(prompt: String) async throws -> String {
-        guard let url = URL(string: Config.openAIEndpoint) else {
+        guard let url = URL(string: Config.apiEndpoint) else {
             throw AIError.invalidURL
         }
         
@@ -236,9 +236,9 @@ class AIService: ObservableObject {
         request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
         
         let (data, _) = try await URLSession.shared.data(for: request)
-        let response = try JSONDecoder().decode(OpenAIResponse.self, from: data)
+        let response = try JSONDecoder().decode(BackendResponse.self, from: data)
         
-        return response.choices.first?.message.content ?? ""
+        return response.message
     }
     
     private func parseExtractionResponse(_ response: String) -> (moodScore: Int, activities: [String])? {
@@ -413,7 +413,7 @@ class AIService: ObservableObject {
     
     // Call OpenAI for insight analysis (made internal for PatternEngine access)
     func callOpenAIForAnalysis(prompt: String) async throws -> String {
-        guard let url = URL(string: Config.openAIEndpoint) else {
+        guard let url = URL(string: Config.apiEndpoint) else {
             throw AIError.invalidURL
         }
         
@@ -435,9 +435,9 @@ class AIService: ObservableObject {
         request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
         
         let (data, _) = try await URLSession.shared.data(for: request)
-        let response = try JSONDecoder().decode(OpenAIResponse.self, from: data)
+        let response = try JSONDecoder().decode(BackendResponse.self, from: data)
         
-        return response.choices.first?.message.content ?? ""
+        return response.message
     }
     
     // Fallback basic insights (when AI fails or not configured)
