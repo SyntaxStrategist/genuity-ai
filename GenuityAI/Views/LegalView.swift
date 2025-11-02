@@ -133,7 +133,7 @@ struct TermsOfServiceView: View {
                     LegalSection(title: "8. Contact") {
                         Text("""
                         For questions about these terms:
-                        Email: support@genuity.app
+                        Email: genuityaiapp@gmail.com
                         
                         For mental health emergencies:
                         Call 988 (US) or your local emergency services
@@ -305,7 +305,7 @@ struct PrivacyPolicyView: View {
                     LegalSection(title: "9. Contact Us") {
                         Text("""
                         Privacy questions:
-                        📧 privacy@genuity.app
+                        📧 genuityaiapp@gmail.com
                         
                         Crisis support:
                         📞 988 (Suicide & Crisis Lifeline)
