@@ -101,7 +101,8 @@ struct InsightsView: View {
         .onAppear {
             let patterns = patternEngine.detectPatterns(from: dataManager.entries)
             if !patterns.isEmpty {
-                patternEngine.currentPrediction = patternEngine.generatePrediction(from: dataManager.entries)
+                let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+                patternEngine.currentPrediction = patternEngine.generatePrediction(for: tomorrow, entries: dataManager.entries, patterns: patterns)
             }
         }
     }
@@ -612,21 +613,21 @@ struct PredictionCard: View {
                     Text("⚠️ Watch Out For:")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                    ForEach(prediction.riskFactors, id: \.self) { factor in
-                        Text("• \(factor)")
+                    ForEach(prediction.riskFactors) { factor in
+                        Text("• \(factor.name)")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
                 }
             }
             
-            if !prediction.interventionPlan.steps.isEmpty {
+            if let plan = prediction.interventionPlan, !plan.steps.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("💪 Prevention Plan:")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundColor(.purple)
-                    ForEach(prediction.interventionPlan.steps.prefix(3), id: \.id) { step in
+                    ForEach(plan.steps.prefix(3), id: \.id) { step in
                         HStack(alignment: .top, spacing: 8) {
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.purple)

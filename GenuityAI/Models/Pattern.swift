@@ -87,7 +87,7 @@ enum RiskLevel: String, Codable {
     }
 }
 
-struct RiskFactor: Identifiable, Codable {
+struct RiskFactor: Identifiable, Codable, Hashable {
     let id: UUID
     let name: String               // "Monday mornings"
     let impact: Double             // -1.2
@@ -100,6 +100,14 @@ struct RiskFactor: Identifiable, Codable {
         self.impact = impact
         self.confidence = confidence
         self.source = source
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: RiskFactor, rhs: RiskFactor) -> Bool {
+        lhs.id == rhs.id
     }
 }
 
