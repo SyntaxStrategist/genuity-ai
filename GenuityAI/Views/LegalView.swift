@@ -368,7 +368,7 @@ struct LegalConsentView: View {
                         NoticeItem(
                             icon: "lock.fill",
                             color: .green,
-                            text: "Your data stays 100% private on your device"
+                            text: "Your mood data stays encrypted on your device. Optional cloud AI for better chat."
                         )
                         
                         NoticeItem(
