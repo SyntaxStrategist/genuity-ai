@@ -1,0 +1,461 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A0000010000000000000001 /* GenuityAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000020000000000000001 /* GenuityAIApp.swift */; };
+		1A0000030000000000000001 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000040000000000000001 /* ContentView.swift */; };
+		1A0000050000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000060000000000000001 /* Assets.xcassets */; };
+		1A0000070000000000000001 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000080000000000000001 /* ChatView.swift */; };
+		1A0000090000000000000001 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000A0000000000000001 /* InsightsView.swift */; };
+		1A00000B0000000000000001 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000C0000000000000001 /* HistoryView.swift */; };
+		1A00000D0000000000000001 /* MoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000E0000000000000001 /* MoodEntry.swift */; };
+		1A00000F0000000000000001 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000100000000000000001 /* AIService.swift */; };
+		1A0000110000000000000001 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000120000000000000001 /* DataManager.swift */; };
+		1A0000240000000000000001 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000250000000000000001 /* Config.swift */; };
+		1A0000260000000000000001 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000270000000000000001 /* OnboardingView.swift */; };
+		1A0000280000000000000001 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000290000000000000001 /* NotificationManager.swift */; };
+		1A00002A0000000000000001 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00002B0000000000000001 /* Pattern.swift */; };
+		1A00002C0000000000000001 /* PatternEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00002D0000000000000001 /* PatternEngine.swift */; };
+		1A00002E0000000000000001 /* PredictionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00002F0000000000000001 /* PredictionsView.swift */; };
+		1A0000300000000000000001 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000310000000000000001 /* KeychainManager.swift */; };
+		1A0000320000000000000001 /* SecurityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000330000000000000001 /* SecurityManager.swift */; };
+		1A0000340000000000000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000350000000000000001 /* SettingsView.swift */; };
+		1A0000360000000000000001 /* LegalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000370000000000000001 /* LegalView.swift */; };
+		1A0000380000000000000001 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000390000000000000001 /* HealthKitManager.swift */; };
+		1A00003A0000000000000001 /* AccountabilityCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00003B0000000000000001 /* AccountabilityCheck.swift */; };
+		1A00003C0000000000000001 /* AccountabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00003D0000000000000001 /* AccountabilityView.swift */; };
+		1A00003E0000000000000001 /* EffectivenessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00003F0000000000000001 /* EffectivenessView.swift */; };
+		1A0000400000000000000001 /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000410000000000000001 /* CheckboxToggleStyle.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A0000010000000000000002 /* GenuityAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenuityAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0000020000000000000001 /* GenuityAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenuityAIApp.swift; sourceTree = "<group>"; };
+		1A0000040000000000000001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1A0000060000000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A0000080000000000000001 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		1A00000A0000000000000001 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
+		1A00000C0000000000000001 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		1A00000E0000000000000001 /* MoodEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEntry.swift; sourceTree = "<group>"; };
+		1A0000100000000000000001 /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
+		1A0000120000000000000001 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1A0000250000000000000001 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		1A0000270000000000000001 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		1A0000290000000000000001 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		1A00002B0000000000000001 /* Pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
+		1A00002D0000000000000001 /* PatternEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternEngine.swift; sourceTree = "<group>"; };
+		1A00002F0000000000000001 /* PredictionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionsView.swift; sourceTree = "<group>"; };
+		1A0000310000000000000001 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		1A0000330000000000000001 /* SecurityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityManager.swift; sourceTree = "<group>"; };
+		1A0000350000000000000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1A0000370000000000000001 /* LegalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalView.swift; sourceTree = "<group>"; };
+		1A0000390000000000000001 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		1A00003B0000000000000001 /* AccountabilityCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountabilityCheck.swift; sourceTree = "<group>"; };
+		1A00003D0000000000000001 /* AccountabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountabilityView.swift; sourceTree = "<group>"; };
+		1A00003F0000000000000001 /* EffectivenessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectivenessView.swift; sourceTree = "<group>"; };
+		1A0000410000000000000001 /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A0000130000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			frameworks = (
+				HealthKit.framework,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A0000140000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				1A0000150000000000000001 /* GenuityAI */,
+				1A0000160000000000000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A0000150000000000000001 /* GenuityAI */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000020000000000000001 /* GenuityAIApp.swift */,
+				1A0000170000000000000001 /* Views */,
+				1A0000180000000000000001 /* Models */,
+				1A0000190000000000000001 /* Services */,
+				1A0000060000000000000001 /* Assets.xcassets */,
+			);
+			path = GenuityAI;
+			sourceTree = "<group>";
+		};
+		1A0000160000000000000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000010000000000000002 /* GenuityAI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A0000170000000000000001 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000040000000000000001 /* ContentView.swift */,
+				1A0000080000000000000001 /* ChatView.swift */,
+				1A00000A0000000000000001 /* InsightsView.swift */,
+				1A00000C0000000000000001 /* HistoryView.swift */,
+				1A0000270000000000000001 /* OnboardingView.swift */,
+				1A00002F0000000000000001 /* PredictionsView.swift */,
+				1A0000350000000000000001 /* SettingsView.swift */,
+				1A0000370000000000000001 /* LegalView.swift */,
+				1A00003D0000000000000001 /* AccountabilityView.swift */,
+				1A00003F0000000000000001 /* EffectivenessView.swift */,
+				1A0000420000000000000001 /* Helpers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1A0000180000000000000001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A00000E0000000000000001 /* MoodEntry.swift */,
+				1A00002B0000000000000001 /* Pattern.swift */,
+				1A00003B0000000000000001 /* AccountabilityCheck.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1A0000190000000000000001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000100000000000000001 /* AIService.swift */,
+				1A0000120000000000000001 /* DataManager.swift */,
+				1A0000250000000000000001 /* Config.swift */,
+				1A0000290000000000000001 /* NotificationManager.swift */,
+				1A00002D0000000000000001 /* PatternEngine.swift */,
+				1A0000310000000000000001 /* KeychainManager.swift */,
+				1A0000330000000000000001 /* SecurityManager.swift */,
+				1A0000390000000000000001 /* HealthKitManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1A0000420000000000000001 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000410000000000000001 /* CheckboxToggleStyle.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A00001A0000000000000001 /* GenuityAI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A00001B0000000000000001 /* Build configuration list for PBXNativeTarget "GenuityAI" */;
+			buildPhases = (
+				1A00001C0000000000000001 /* Sources */,
+				1A0000130000000000000001 /* Frameworks */,
+				1A00001D0000000000000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GenuityAI;
+			productName = GenuityAI;
+			productReference = 1A0000010000000000000002 /* MoodAI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A00001E0000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					1A00001A0000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 1A00001F0000000000000001 /* Build configuration list for PBXProject "GenuityAI" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A0000140000000000000001;
+			productRefGroup = 1A0000160000000000000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A00001A0000000000000001 /* GenuityAI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A00001D0000000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000050000000000000001 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A00001C0000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000030000000000000001 /* ContentView.swift in Sources */,
+				1A0000010000000000000001 /* GenuityAIApp.swift in Sources */,
+				1A0000070000000000000001 /* ChatView.swift in Sources */,
+				1A0000090000000000000001 /* InsightsView.swift in Sources */,
+				1A00000B0000000000000001 /* HistoryView.swift in Sources */,
+				1A00000D0000000000000001 /* MoodEntry.swift in Sources */,
+				1A00000F0000000000000001 /* AIService.swift in Sources */,
+				1A0000110000000000000001 /* DataManager.swift in Sources */,
+				1A0000240000000000000001 /* Config.swift in Sources */,
+				1A0000260000000000000001 /* OnboardingView.swift in Sources */,
+				1A0000280000000000000001 /* NotificationManager.swift in Sources */,
+				1A00002A0000000000000001 /* Pattern.swift in Sources */,
+				1A00002C0000000000000001 /* PatternEngine.swift in Sources */,
+				1A00002E0000000000000001 /* PredictionsView.swift in Sources */,
+				1A0000300000000000000001 /* KeychainManager.swift in Sources */,
+				1A0000320000000000000001 /* SecurityManager.swift in Sources */,
+				1A0000340000000000000001 /* SettingsView.swift in Sources */,
+				1A0000360000000000000001 /* LegalView.swift in Sources */,
+				1A0000380000000000000001 /* HealthKitManager.swift in Sources */,
+				1A00003A0000000000000001 /* AccountabilityCheck.swift in Sources */,
+				1A00003C0000000000000001 /* AccountabilityView.swift in Sources */,
+				1A00003E0000000000000001 /* EffectivenessView.swift in Sources */,
+				1A0000400000000000000001 /* CheckboxToggleStyle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1A0000200000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1A0000210000000000000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1A0000220000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GenuityAI/GenuityAI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = GenuityAI/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.genuityai.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1A0000230000000000000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GenuityAI/GenuityAI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = GenuityAI/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.genuityai.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A00001B0000000000000001 /* Build configuration list for PBXNativeTarget "GenuityAI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000220000000000000001 /* Debug */,
+				1A0000230000000000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A00001F0000000000000001 /* Build configuration list for PBXProject "GenuityAI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000200000000000000001 /* Debug */,
+				1A0000210000000000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1A00001E0000000000000001 /* Project object */;
+}
+
