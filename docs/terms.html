@@ -201,10 +201,20 @@
 
         <h2>12. Third-Party Services</h2>
 
-        <h3>12.1 OpenAI (Optional)</h3>
+        <h3>12.1 OpenAI (Optional - User Controlled)</h3>
         <p>
-            If you enable Cloud AI mode, your chat messages are sent to OpenAI's API. OpenAI's terms and privacy policy apply to this data. 
-            Your mood data is never sent to OpenAI.
+            If you enable Cloud AI mode in Settings:
+        </p>
+        <ul>
+            <li><strong>What's sent:</strong> Your chat messages ("feeling stressed", "had a great day", etc.)</li>
+            <li><strong>Why:</strong> To provide intelligent conversational responses using GPT-4</li>
+            <li><strong>OpenAI's terms apply:</strong> Data is processed according to OpenAI's privacy policy and API terms</li>
+            <li><strong>What's NOT sent:</strong> Your mood scores, patterns, predictions, activities, timestamps, or HealthKit data</li>
+            <li><strong>Your control:</strong> Disable Cloud AI anytime to return to 100% local processing</li>
+        </ul>
+        
+        <p>
+            <strong>Default Mode:</strong> The app uses local-only AI by default. Cloud AI is opt-in only.
         </p>
 
         <h2>13. Indemnification</h2>
