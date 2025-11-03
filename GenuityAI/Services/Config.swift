@@ -26,7 +26,7 @@ struct Config {
     static let openAIModel = "gpt-4o-mini"
     
     // Backend API endpoint (YOUR Vercel backend!)
-    static let apiEndpoint = "https://genuity-9uzwbiyui-avenir-ai-solutions-projects.vercel.app/api/chat"
+    static let apiEndpoint = "https://genuity-ai.vercel.app/api/chat"
     
     // MARK: - System Prompt
     static let systemPrompt = """
